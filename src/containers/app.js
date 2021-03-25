@@ -34,7 +34,7 @@ class App extends Component {
     applyVideoToCurrentMovie() {
         axios.get(`${API_END_POINT}movie/${this.state.currentMovie.id}?${API_KEY}&append_to_response=videos&include_adult=false`)
         .then((response) => {
-            const youtubeKey = response.date.videos.results[0].key;
+            const youtubeKey = response.data.videos.results[0].key;
             let newCurrentMovieState = this.state.currentMovie;
             newCurrentMovieState.videoId = youtubeKey;
             this.setState({currentMovie: newCurrentMovieState});
